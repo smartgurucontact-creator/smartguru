@@ -129,6 +129,10 @@ else if (/technology|tech/.test(q)) answer="Technology ke baare mein jaanne ke l
 else if (/online fraud|ऑनलाइन फ्रॉड|online scam|ठगी/.test(q)) answer="Online Fraud से बचने के लिए अनजान लिंक पर क्लिक न करें, किसी को OTP या PIN न बताएं और पैसे पाने के लिए UPI PIN कभी न डालें।";
 else if (/strong password|मजबूत पासवर्ड|पासवर्ड कैसा/.test(q)) answer="Strong Password ऐसा पासवर्ड होता है जिसे आसानी से कोई अनुमान न लगा सके। अक्षर, नंबर और विशेष चिन्ह मिलाकर लंबा और अलग पासवर्ड बनाएं।";
 else if (/otp|ओटीपी/.test(q)) answer="OTP का पूरा नाम One Time Password है। यह एक बार इस्तेमाल होने वाला सुरक्षा कोड है। इसे किसी के साथ साझा न करें, चाहे कोई बैंक कर्मचारी बनकर ही क्यों न मांगे।";
+else if (/computer|कंप्यूटर/.test(q)) answer="Computer एक इलेक्ट्रॉनिक मशीन है जो डेटा को प्रोसेस करके जानकारी देती है। इसका उपयोग पढ़ाई, काम, गणना और इंटरनेट चलाने में होता है।";
+else if (/cpu|सीपीयू/.test(q)) answer="CPU का पूरा नाम Central Processing Unit है। इसे कंप्यूटर का मुख्य प्रोसेसिंग हिस्सा कहा जाता है। यह निर्देशों को प्रोसेस करता है।";
+else if (/ram|रैम/.test(q)) answer="RAM का पूरा नाम Random Access Memory है। यह कंप्यूटर की अस्थायी मेमोरी है, जिसमें चल रहे ऐप और काम का डेटा रहता है।";
+else if (/keyboard|कीबोर्ड|mouse|माउस/.test(q)) answer="Keyboard से हम कंप्यूटर में अक्षर और नंबर टाइप करते हैं। Mouse की मदद से स्क्रीन पर पॉइंटर चलाते हैं और चीजें चुनते हैं।";
 else if (/thank|धन्यवाद|shukriya/.test(q)) answer="Aapka swagat hai! Smart Guru par seekhte rahiye.";
  reply.textContent=answer;
  document.getElementById("messages").appendChild(reply);
