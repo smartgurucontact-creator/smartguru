@@ -370,6 +370,40 @@ button:focus-visible, .btn:focus-visible, nav a:focus-visible, footer a:focus-vi
 .thanks { margin-top: 28px !important; color: var(--muted) !important; font-size: 15px !important; }
 
 /* ---------- AI Tools directory ---------- */
+.popular-section {
+    max-width: 1000px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+}
+
+.popular-section h3 {
+    margin: 0 0 16px;
+    font-size: 20px;
+}
+
+.popular-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.popular-grid a {
+    padding: 12px 18px;
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    background: rgba(56,189,248,0.12);
+    border: 1px solid rgba(56,189,248,0.3);
+    transition: 0.2s;
+}
+
+.popular-grid a:hover {
+    background: rgba(56,189,248,0.25);
+    transform: translateY(-3px);
+}
 .tools-bar {
     display: flex;
     flex-direction: column;
@@ -672,7 +706,21 @@ footer .footer-links a:hover { color: var(--cyan); }
             <h2>AI <span class="gradient-text">Tools</span></h2>
             <p>Discover popular AI tools for chatting, creating images and videos, coding, writing and getting more done.</p>
         </div>
-        <div class="tools-bar reveal">
+</div>
+
+<div class="popular-section">
+    <h3>🔥 Popular AI Tools</h3>
+    <div class="popular-grid">
+<a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">🤖 ChatGPT</a>
+<a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">✨ Gemini</a>
+<a href="https://claude.ai" target="_blank" rel="noopener noreferrer">🧠 Claude</a>
+<a href="https://www.canva.com" target="_blank" rel="noopener noreferrer">🎨 Canva</a>
+<a href="https://runwayml.com" target="_blank" rel="noopener noreferrer">🎬 Runway</a>
+    </div>
+</div>
+
+<div class="tools-bar reveal">       
+ <div class="tools-bar reveal">
             <label class="search">
                 <span class="sr-only">Search AI tools</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
