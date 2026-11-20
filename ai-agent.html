@@ -113,14 +113,14 @@ document.getElementById("chatForm").addEventListener("submit",function(e){
  const q=text.toLowerCase();
  let answer="Main abhi FAQ Assistant hoon. Aap mujhse Coding, Android, Website ya Technology ke baare mein pooch sakte hain.";
  if (/^(hi|hello|hey|namaste|नमस्ते)/.test(q)) answer="Namaste! Smart Guru mein aapka swagat hai. Main aapki kya madad kar sakta hoon?";
- else if (/how are you|kaise ho|कैसे हो/.test(q)) answer="Main bilkul theek hoon! Aapko kis topic par madad chahiye?";
+ 
  else if (/coding|codding|कोडिंग|programming/.test(q)) answer="Coding ka matlab computer ko instructions dena hai. Jaise hum Hindi ya English mein baat karte hain, waise hi computer ko Python, JavaScript aur HTML jaisi languages se instructions dete hain. Example: HTML se website banti hai, JavaScript se website interactive hoti hai. Coding seekhne ke liye HTML se shuru karein.";
  else if (/python|पाइथन/.test(q)) answer="Python ek popular programming language hai. Iska use websites, automation, data analysis aur AI jaise projects mein hota hai. Example: print('Hello World') Python ka ek simple command hai.";
  else if (/html|एचटीएमएल/.test(q)) answer="HTML ka use website ka structure banane ke liye hota hai. Isse hum heading, paragraph, image aur links add kar sakte hain.";
  else if (/css|सीएसएस/.test(q)) answer="CSS ka use website ko sundar banane ke liye hota hai. Isse colors, fonts, spacing aur layout design kar sakte hain.";
  else if (/javascript|java script|जावास्क्रिप्ट/.test(q)) answer="JavaScript ek programming language hai. Iska use website ko interactive banane ke liye hota hai, jaise button click karne par action hona ya form submit karna.";
  else if (/android|phone|mobile/.test(q)) answer="Android tips: Phone ki Settings mein Storage aur Battery sections check karein. Kisi bhi app ko permission dene se pehle use samjhein.";
- else if (/website|github|netlify/.test(q)) answer="Website banane ke liye HTML, CSS aur JavaScript ka use hota hai. Smart Guru website bhi inhi technologies se bani hai.";
+ 
  else if (/website|वेबसाइट/.test(q)) answer="Website इंटरनेट पर मौजूद वेब पेजों का समूह होती है। जैसे Smart Guru एक वेबसाइट है, जहाँ आप जानकारी और ट्यूटोरियल पढ़ सकते हैं।";
 else if (/internet|इंटरनेट|wifi|वाईफाई/.test(q)) answer="Internet दुनिया भर के कंप्यूटर और मोबाइल को जोड़ने वाला नेटवर्क है। इसकी मदद से हम जानकारी खोज सकते हैं, वीडियो देख सकते हैं और संदेश भेज सकते हैं।";
 else if (/hang|hanging|slow|लटक|हैंग|धीमा/.test(q)) answer="मोबाइल हैंग होने के कई कारण हो सकते हैं, जैसे कम स्टोरेज, बहुत सारे ऐप खुले होना या पुराने सॉफ्टवेयर। अनावश्यक ऐप बंद करें और स्टोरेज चेक करें।";
@@ -133,6 +133,10 @@ else if (/computer|कंप्यूटर/.test(q)) answer="Computer एक �
 else if (/cpu|सीपीयू/.test(q)) answer="CPU का पूरा नाम Central Processing Unit है। इसे कंप्यूटर का मुख्य प्रोसेसिंग हिस्सा कहा जाता है। यह निर्देशों को प्रोसेस करता है।";
 else if (/ram|रैम/.test(q)) answer="RAM का पूरा नाम Random Access Memory है। यह कंप्यूटर की अस्थायी मेमोरी है, जिसमें चल रहे ऐप और काम का डेटा रहता है।";
 else if (/keyboard|कीबोर्ड|mouse|माउस/.test(q)) answer="Keyboard से हम कंप्यूटर में अक्षर और नंबर टाइप करते हैं। Mouse की मदद से स्क्रीन पर पॉइंटर चलाते हैं और चीजें चुनते हैं।";
+else if (/my name is|माय नेम इज/.test(q)) answer='"My name is" का मतलब है "मेरा नाम है"। उदाहरण: My name is Rahul यानी मेरा नाम राहुल है।';
+else if (/how are you|हाउ आर यू|कैसे हो/.test(q)) answer='"How are you?" का मतलब है "आप कैसे हैं?" इसका जवाब दे सकते हैं: "I am fine, thank you." यानी मैं ठीक हूँ, धन्यवाद।';
+else if (/thank you|थैंक यू/.test(q)) answer='"Thank you" का मतलब है "धन्यवाद"। जवाब में आप "You are welcome" कह सकते हैं।';
+else if (/introduction|परिचय|अपना परिचय/.test(q)) answer="अपना परिचय ऐसे दें: Hello! My name is Rahul. I am from India. I am learning English. यानी नमस्ते! मेरा नाम राहुल है। मैं भारत से हूँ। मैं अंग्रेज़ी सीख रहा हूँ।";
 else if (/thank|धन्यवाद|shukriya/.test(q)) answer="Aapka swagat hai! Smart Guru par seekhte rahiye.";
  reply.textContent=answer;
  document.getElementById("messages").appendChild(reply);
