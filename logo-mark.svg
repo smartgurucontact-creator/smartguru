@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Smart Guru">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0b1220"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="14.5" fill="none" stroke="url(#g)" stroke-width="3"/>
+  <!-- bulb -->
+  <path d="M32 12a14 14 0 0 0-8.4 25.2c1.6 1.2 2.4 2.8 2.4 4.6V44h12v-2.2c0-1.8.8-3.4 2.4-4.6A14 14 0 0 0 32 12z" fill="none" stroke="url(#g)" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M27 49h10M28.5 53.5h7" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+  <!-- circuit core -->
+  <path d="M32 20v8m0 0-5 5m5-5 5 5" fill="none" stroke="#e2e8f0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="32" cy="20" r="2.6" fill="#facc15"/>
+  <circle cx="27" cy="33" r="2.4" fill="#38bdf8"/>
+  <circle cx="37" cy="33" r="2.4" fill="#38bdf8"/>
+</svg>

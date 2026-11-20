@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=370b9d2e-dff5-4340-a597-3f315989d2fe
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Guru</title>
+<meta name="description" content="Smart Guru — Learn Technology, Discover New Ideas and Grow Your Skills.">
+<meta name="theme-color" content="#070b14">
+<link rel="icon" type="image/svg+xml" href="logo-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #070b14;
+    --bg-2: #0d1424;
+    --card: rgba(17, 25, 43, 0.72);
+    --line: rgba(148, 163, 184, 0.14);
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --cyan: #38bdf8;
+    --indigo: #6366f1;
+    --yellow: #facc15;
+    --grad: linear-gradient(120deg, #38bdf8 0%, #22d3ee 40%, #6366f1 100%);
+    --radius: 20px;
+    --display: 'Space Grotesk', 'Segoe UI', Roboto, Arial, sans-serif;
+    --body: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Tech grid + glow background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
+    opacity: 0.6;
+}
+.glow {
+    position: fixed;
+    z-index: -1;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.35;
+    pointer-events: none;
+}
+.glow-1 { background: var(--cyan); top: -180px; left: -140px; }
+.glow-2 { background: var(--indigo); top: 30%; right: -220px; opacity: 0.25; }
+
+a { color: inherit; }
+img, svg { max-width: 100%; display: block; }
+
+.container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+    position: sticky;
+    top: 12px;
+    z-index: 1000;
+    margin: 12px auto 0;
+    width: calc(100% - 24px);
+    max-width: 1120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px 10px 16px;
+    background: rgba(13, 20, 36, 0.75);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.3px;
+    color: #f8fafc;
+}
+.brand img { width: 34px; height: 34px; }
+.brand { white-space: nowrap; }
+.brand .accent { color: var(--cyan); }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: color .2s, background .2s;
+}
+.nav-links a:hover,
+.nav-links a.active {
+    color: #fff;
+    background: rgba(56, 189, 248, 0.12);
+}
+
+/* ---------- Sections ---------- */
+section {
+    scroll-margin-top: 90px;
+    padding: 80px 0;
+}
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    padding: 6px 14px;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.08);
+}
+.eyebrow::before {
+    content: "";
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+    animation: pulse 2s infinite;
+}
+h1, h2, h3 { font-family: var(--display); letter-spacing: -0.5px; margin: 0; }
+h2 { font-size: clamp(28px, 5vw, 40px); margin: 16px 0 12px; }
+.gradient-text {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.section-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+.section-head p { color: var(--muted); font-size: 17px; margin: 0; }
+
+/* ---------- Hero ---------- */
+#home {
+    min-height: calc(100vh - 80px);
+    min-height: calc(100svh - 80px);
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+}
+.hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+.hero h1 {
+    font-size: clamp(44px, 9vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -2px;
+    margin: 20px 0 0;
+}
+.hero-text {
+    color: #cbd5e1;
+    font-size: clamp(17px, 2.2vw, 20px);
+    line-height: 1.7;
+    font-weight: 500;
+    margin: 20px 0 32px;
+    max-width: 520px;
+}
+.actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin-top: 36px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 500;
+}
+.tags span { display: inline-flex; align-items: center; gap: 8px; }
+.tags span::before {
+    content: "";
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--cyan);
+}
+
+/* Hero visual */
+.visual {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+}
+.ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+}
+.ring-2 { inset: 13%; border-color: rgba(99, 102, 241, 0.3); border-style: dashed; animation: spin 40s linear infinite; }
+.ring-3 { inset: 26%; border-color: rgba(56, 189, 248, 0.18); }
+.orbit { position: absolute; inset: 0; animation: spin 14s linear infinite; }
+.orbit::before {
+    content: "";
+    position: absolute;
+    top: -6px; left: 50%;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 18px var(--cyan);
+}
+.orbit-2 { inset: 13%; animation-duration: 22s; animation-direction: reverse; }
+.orbit-2::before { background: var(--yellow); box-shadow: 0 0 18px var(--yellow); }
+.core {
+    position: relative;
+    width: 46%;
+    filter: drop-shadow(0 0 40px rgba(56, 189, 248, 0.45));
+    animation: float 6s ease-in-out infinite;
+}
+.core img { width: 100%; height: auto; border-radius: 28%; }
+
+/* ---------- Buttons ---------- */
+button, .btn {
+    -webkit-appearance: none;
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-family: var(--body);
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: transform .2s ease, box-shadow .25s ease, background .25s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.btn-primary {
+    background: var(--grad);
+    background-size: 200% 100%;
+    color: #06121f;
+    box-shadow: 0 8px 28px rgba(56, 189, 248, 0.35), inset 0 1px 0 rgba(255,255,255,0.35);
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background-position: 100% 0;
+    box-shadow: 0 12px 36px rgba(56, 189, 248, 0.5), inset 0 1px 0 rgba(255,255,255,0.35);
+}
+.btn-ghost {
+    background: rgba(255, 255, 255, 0.04);
+    color: #f1f5f9;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+}
+.btn-ghost:hover { transform: translateY(-2px); border-color: var(--cyan); background: rgba(56, 189, 248, 0.08); }
+button:active, .btn:active { transform: translateY(0) scale(0.98); }
+button:focus-visible, .btn:focus-visible, nav a:focus-visible, footer a:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+.btn svg { width: 20px; height: 20px; }
+
+/* ---------- Cards ---------- */
+.box {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.box:hover {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.45);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.18);
+}
+
+#about .intro {
+    padding: 32px;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 24px;
+}
+#about .intro p { margin: 0; color: #cbd5e1; font-size: 18px; }
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.feature { padding: 28px; }
+.feature .icon {
+    width: 48px; height: 48px;
+    display: grid; place-items: center;
+    border-radius: 14px;
+    background: rgba(56, 189, 248, 0.12);
+    color: var(--cyan);
+    margin-bottom: 18px;
+}
+.feature .icon svg { width: 24px; height: 24px; }
+.feature h3 { font-size: 20px; margin-bottom: 8px; }
+.feature p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* Contact */
+.contact-card {
+    position: relative;
+    overflow: hidden;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    text-align: center;
+}
+.contact-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: var(--grad);
+}
+.contact-card p { color: #cbd5e1; font-size: 17px; margin: 0 0 12px; }
+.email-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0 28px !important;
+    padding: 12px 18px;
+    border-radius: 12px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    font-weight: 600;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-wrap: anywhere;
+}
+.email-chip strong { color: var(--cyan); font-weight: 600; }
+.thanks { margin-top: 28px !important; color: var(--muted) !important; font-size: 15px !important; }
+
+/* ---------- AI Tools directory ---------- */
+.tools-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 auto 28px;
+    max-width: 860px;
+}
+.search {
+    position: relative;
+}
+.search svg {
+    position: absolute;
+    left: 18px; top: 50%;
+    width: 20px; height: 20px;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+}
+.search input {
+    width: 100%;
+    min-height: 54px;
+    padding: 14px 18px 14px 50px;
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(13, 20, 36, 0.8);
+    color: var(--text);
+    font: 500 16px var(--body);
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.search input::placeholder { color: #64748b; }
+.search input:focus { border-color: var(--cyan); box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15); }
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+.chips button {
+    min-height: 40px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    transition: color .2s, background .2s, border-color .2s, transform .2s;
+}
+.chips button:hover { color: #fff; border-color: var(--cyan); transform: translateY(-1px); }
+.chips button[aria-pressed="true"] {
+    color: #06121f;
+    background: var(--grad);
+    border-color: transparent;
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
+}
+.tools-count { text-align: center; color: var(--muted); font-size: 14px; margin: 0 0 20px; }
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+.tool {
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    animation: welcome .5s ease-out both;
+    animation-delay: var(--d, 0s);
+}
+.tool-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.tool-icon {
+    flex: none;
+    width: 46px; height: 46px;
+    display: grid; place-items: center;
+    border-radius: 14px;
+    font: 700 20px var(--display);
+    color: var(--c, var(--cyan));
+    background: color-mix(in srgb, var(--c, #38bdf8) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c, #38bdf8) 30%, transparent);
+}
+.tool h3 { font-size: 19px; line-height: 1.25; }
+.tool-cat {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--c, var(--cyan));
+}
+.tool p { margin: 0 0 18px; color: var(--muted); font-size: 15px; flex: 1; }
+.tool .btn { min-height: 44px; padding: 10px 18px; font-size: 15px; width: 100%; }
+.tool .btn svg { width: 16px; height: 16px; }
+.tools-empty { text-align: center; padding: 40px 24px; color: var(--muted); }
+.tools-empty strong { display: block; color: var(--text); font-family: var(--display); font-size: 20px; margin-bottom: 6px; }
+.tools-note { text-align: center; color: #64748b; font-size: 13px; margin: 24px 0 0; }
+
+/* ---------- Footer ---------- */
+footer {
+    border-top: 1px solid var(--line);
+    margin-top: 40px;
+    padding: 32px 0;
+    background: rgba(7, 11, 20, 0.6);
+}
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 6px; }
+footer .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: color .2s;
+}
+footer .footer-links a:hover { color: var(--cyan); }
+.copy { color: #64748b; font-size: 13px; margin: 0; }
+
+/* ---------- Toast (Get Started message) ---------- */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translate(-50%, 140%);
+    z-index: 2000;
+    padding: 14px 22px;
+    border-radius: 14px;
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    box-shadow: 0 10px 40px rgba(56, 189, 248, 0.3);
+    font-weight: 600;
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform .4s cubic-bezier(.2,.9,.3,1.2), opacity .3s, visibility .4s;
+    width: max-content;
+    max-width: calc(100% - 32px);
+    text-align: center;
+}
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
+
+/* ---------- Animations ---------- */
+@keyframes welcome {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+.hero-copy > * { animation: welcome .9s ease-out both; }
+.hero-copy > *:nth-child(2) { animation-delay: .08s; }
+.hero-copy > *:nth-child(3) { animation-delay: .16s; }
+.hero-copy > *:nth-child(4) { animation-delay: .24s; }
+.hero-copy > *:nth-child(5) { animation-delay: .32s; }
+.visual { animation: welcome 1.2s ease-out .2s both; }
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.features .reveal:nth-child(2) { transition-delay: .1s; }
+.features .reveal:nth-child(3) { transition-delay: .2s; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+    .hero-copy { display: flex; flex-direction: column; align-items: center; }
+    .hero-text { margin-left: auto; margin-right: auto; }
+    .actions, .tags { justify-content: center; }
+    .visual { max-width: 320px; order: -1; }
+    .features { grid-template-columns: 1fr 1fr; }
+    .features .feature:last-child { grid-column: 1 / -1; }
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+    section { padding: 56px 0; }
+    #home { padding: 32px 0 48px; min-height: auto; }
+    .brand { font-size: 17px; }
+    .brand img { width: 30px; height: 30px; }
+    .nav-links a { padding: 8px 10px; font-size: 14px; }
+    .visual { max-width: 250px; }
+    .actions { flex-direction: column; width: 100%; }
+    .actions .btn, .actions button { width: 100%; }
+    .features { grid-template-columns: 1fr; }
+    #about .intro, .feature { padding: 24px; }
+    .contact-card { padding: 36px 20px; }
+    .contact-card .btn { width: 100%; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .glow { width: 320px; height: 320px; }
+    .tools-grid { grid-template-columns: 1fr; gap: 14px; }
+    .tool { padding: 20px; }
+    .chips { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; margin: 0 -20px; padding: 2px 20px 6px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .chips::-webkit-scrollbar { display: none; }
+    .chips button { flex: none; }
+}
+@media (max-width: 480px) {
+    nav { padding: 8px 8px 8px 12px; gap: 6px; }
+    .nav-links { gap: 0; }
+    .nav-links a { padding: 8px 7px; font-size: 13px; }
+}
+@media (max-width: 420px) {
+    .brand-name { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="glow glow-1" aria-hidden="true"></div>
+<div class="glow glow-2" aria-hidden="true"></div>
+
+<nav aria-label="Main">
+    <a href="#home" class="brand" aria-label="Smart Guru home">
+        <img src="logo-mark.svg" alt="" width="34" height="34">
+        <span class="brand-name">Smart <span class="accent">Guru</span></span>
+    </a>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#ai-tools">AI Tools</a>
+        <a href="#tutorials">Tutorials</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<main>
+<section id="home">
+    <div class="container hero">
+        <div class="hero-copy">
+            <span class="eyebrow">Technology &amp; Learning</span>
+            <h1>Smart <span class="gradient-text">Guru</span></h1>
+            <p class="hero-text">Learn Technology, Discover New Ideas and Grow Your Skills with Smart Guru!</p>
+            <div class="actions">
+                <button class="btn btn-primary" onclick="showMessage()">
+                    Get Started
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+                <a href="#about" class="btn btn-ghost">Learn More</a>
+            </div>
+            <div class="tags"><span>Learn</span><span>Grow</span><span>Be Smart</span></div>
+        </div>
+        <div class="visual" aria-hidden="true">
+            <div class="ring"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
+            <div class="orbit"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="core"><img src="logo-mark.svg" alt="Smart Guru Logo" width="200" height="200"></div>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">Who we are</span>
+            <h2>About <span class="gradient-text">Smart Guru</span></h2>
+        </div>
+        <div class="box intro reveal">
+            <p>Smart Guru is my first website. Here I share technology and learning ideas.</p>
+        </div>
+        <div class="features">
+            <div class="box feature reveal">
+                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></div>
+                <h3>Learn Technology</h3>
+                <p>Simple, clear explanations of the tech that shapes our world.</p>
+            </div>
+            <div class="box feature reveal">
+                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V16h8v-1.3A7 7 0 0 0 12 2z"/></svg></div>
+                <h3>Discover New Ideas</h3>
+                <p>Fresh learning ideas to spark curiosity and creativity.</p>
+            </div>
+            <div class="box feature reveal">
+                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></div>
+                <h3>Grow Your Skills</h3>
+                <p>Keep learning, keep growing, and become smarter every day.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ai-tools">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">AI Directory</span>
+            <h2>AI <span class="gradient-text">Tools</span></h2>
+            <p>Discover popular AI tools for chatting, creating images and videos, coding, writing and getting more done.</p>
+        </div>
+        <div class="tools-bar reveal">
+            <label class="search">
+                <span class="sr-only">Search AI tools</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input type="search" id="tool-search" placeholder="Search tools by name or category…" autocomplete="off" enterkeyhint="search">
+            </label>
+            <div class="chips" id="tool-chips" role="group" aria-label="Filter by category"></div>
+        </div>
+        <p class="tools-count" id="tools-count" aria-live="polite"></p>
+        <div class="tools-grid" id="tools-grid"></div>
+        <div class="box tools-empty" id="tools-empty" hidden>
+            <strong>No tools found</strong>
+            Try a different name or choose another category.
+        </div>
+        <p class="tools-note">Links open the official website of each tool in a new tab. Smart Guru is not affiliated with these tools.</p>
+    </div>
+</section>
+
+
+<section id="tutorials">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">Learn &amp; Explore</span>
+            <h2>Technology <span class="gradient-text">Tutorials</span></h2>
+            <p>Easy step-by-step guides to help you learn technology, apps, AI and coding.</p>
+        </div>
+        <div class="tools-grid">
+            <a class="box feature reveal" href="ai-tutorials.html" style="text-decoration:none">
+                <h3>🤖 AI Tutorials</h3>
+                <p>Learn how to use AI tools, prompts and smart features.</p>
+            </a>
+            <a class="box feature reveal" href="android-tips.html" style="text-decoration:none">
+                <h3>📱 Android Tutorials</h3>
+                <p>Helpful Android tips, settings and app guides.</p>
+            </a>
+            <a class="box feature reveal" href="coding-tutorials.html" style="text-decoration:none">
+                <h3>💻 Coding Tutorials</h3>
+                <p>Beginner-friendly coding and website development.</p>
+            </a>
+            <a class="box feature reveal" href="internet-tutorials.html" style="text-decoration:none">
+                <h3>🌐 Internet Tutorials</h3>
+                <p>Learn websites, online services and useful internet tips.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">Get in touch</span>
+            <h2>Contact <span class="gradient-text">Us</span></h2>
+        </div>
+        <div class="box contact-card reveal">
+            <p>Have a question or suggestion? Contact Smart Guru.</p>
+            <p class="email-chip">Email: <strong>smartguru.contact@gmail.com</strong></p>
+            <div>
+                <a href="mailto:smartguru.contact@gmail.com" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                    Email Us
+                </a>
+            </div>
+            <p class="thanks">Thank you for visiting Smart Guru!</p>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <a href="#home" class="brand">
+            <img src="logo-mark.svg" alt="" width="30" height="30">
+            <span>Smart <span class="accent">Guru</span></span>
+        </a>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#ai-tools">AI Tools</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p class="copy">&copy; <span id="year"></span> Smart Guru. Learn · Grow · Be Smart</p>
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+function showMessage() {
+    var t = document.getElementById("toast");
+    t.textContent = "Welcome to Smart Guru!";
+    t.classList.add("show");
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(function () {
+        t.classList.remove("show");
+        document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+    }, 1600);
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+(function () {
+    var items = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+        items.forEach(function (el) { el.classList.add("in"); });
+    } else {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.15 });
+        items.forEach(function (el) { io.observe(el); });
+    }
+
+    var links = document.querySelectorAll(".nav-links a");
+    var sections = document.querySelectorAll("main section");
+    if ("IntersectionObserver" in window) {
+        var so = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    links.forEach(function (a) {
+                        a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id);
+                    });
+                }
+            });
+        }, { rootMargin: "-45% 0px -50% 0px" });
+        sections.forEach(function (s) { so.observe(s); });
+    }
+})();
+(function () {
+    var T = [
+        ["ChatGPT","AI Chat","Conversational AI assistant by OpenAI for answers, ideas and learning.","https://chatgpt.com"],
+        ["Claude","AI Chat","Thoughtful AI assistant by Anthropic for writing, analysis and coding.","https://claude.ai"],
+        ["Gemini","AI Chat","Google's AI assistant connected to Search and Google apps.","https://gemini.google.com"],
+        ["Microsoft Copilot","AI Chat","Microsoft's everyday AI companion for chat and web answers.","https://copilot.microsoft.com"],
+        ["Perplexity","AI Chat","AI answer engine that searches the web and cites its sources.","https://www.perplexity.ai"],
+        ["Midjourney","AI Image Generation","Create stunning, artistic images from text prompts.","https://www.midjourney.com"],
+        ["Adobe Firefly","AI Image Generation","Adobe's generative AI for images, effects and design.","https://firefly.adobe.com"],
+        ["Leonardo.Ai","AI Image Generation","Generate images and art assets with fine creative control.","https://leonardo.ai"],
+        ["Ideogram","AI Image Generation","Image generator known for clear, accurate text in images.","https://ideogram.ai"],
+        ["Runway","AI Video","AI video generation and editing tools for creators.","https://runwayml.com"],
+        ["Pika","AI Video","Turn text and images into short, creative videos.","https://pika.art"],
+        ["Synthesia","AI Video","Create videos with AI avatars and voices in many languages.","https://www.synthesia.io"],
+        ["Luma Dream Machine","AI Video","Generate realistic video clips from text and images.","https://lumalabs.ai/dream-machine"],
+        ["GitHub Copilot","AI Coding","AI pair programmer that suggests code in your editor.","https://github.com/features/copilot"],
+        ["Cursor","AI Coding","AI-first code editor for writing and editing code faster.","https://www.cursor.com"],
+        ["Replit","AI Coding","Build and deploy apps in the browser with an AI agent.","https://replit.com"],
+        ["Grammarly","AI Writing","Improve grammar, clarity and tone as you write.","https://www.grammarly.com"],
+        ["QuillBot","AI Writing","Paraphrase, summarize and polish your writing.","https://quillbot.com"],
+        ["Jasper","AI Writing","AI writing platform for marketing and business content.","https://www.jasper.ai"],
+        ["Notion AI","AI Productivity","Write, summarize and organize inside your Notion workspace.","https://www.notion.so/product/ai"],
+        ["Otter.ai","AI Productivity","AI meeting notes with live transcription and summaries.","https://otter.ai"],
+        ["Gamma","AI Productivity","Create presentations, documents and webpages with AI.","https://gamma.app"],
+        ["Canva Magic Studio","AI Productivity","Canva's AI design tools for fast visual content.","https://www.canva.com/magic/"]
+    ];
+    var C = {"AI Chat":"#38bdf8","AI Image Generation":"#f472b6","AI Video":"#facc15","AI Coding":"#34d399","AI Writing":"#a78bfa","AI Productivity":"#fb923c"};
+    var grid = document.getElementById("tools-grid"), chips = document.getElementById("tool-chips"),
+        input = document.getElementById("tool-search"), count = document.getElementById("tools-count"),
+        empty = document.getElementById("tools-empty"), cat = "All";
+    ["All"].concat(Object.keys(C)).forEach(function (c) {
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = c; b.setAttribute("aria-pressed", c === cat);
+        b.onclick = function () {
+            cat = c;
+            chips.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+            render();
+        };
+        chips.appendChild(b);
+    });
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+    function render() {
+        var q = input.value.trim().toLowerCase(), n = 0;
+        grid.textContent = "";
+        T.forEach(function (t) {
+            if (cat !== "All" && t[1] !== cat) return;
+            if (q && (t[0] + " " + t[1]).toLowerCase().indexOf(q) < 0) return;
+            var card = el("article", "box tool");
+            card.style.setProperty("--c", C[t[1]]);
+            card.style.setProperty("--d", Math.min(n, 8) * 0.04 + "s");
+            var top = el("div", "tool-top"), info = el("div");
+            top.appendChild(el("div", "tool-icon", t[0].charAt(0)));
+            info.appendChild(el("h3", "", t[0])); info.appendChild(el("span", "tool-cat", t[1]));
+            top.appendChild(info); card.appendChild(top);
+            card.appendChild(el("p", "", t[2]));
+            var a = el("a", "btn btn-primary", "Open Tool ");
+            a.href = t[3]; a.target = "_blank"; a.rel = "noopener noreferrer";
+            a.setAttribute("aria-label", "Open " + t[0] + " (opens in a new tab)");
+            a.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>');
+            card.appendChild(a); grid.appendChild(card); n++;
+        });
+        empty.hidden = n > 0;
+        count.textContent = n + (n === 1 ? " tool" : " tools") + (cat !== "All" ? " in " + cat : "");
+    }
+    input.addEventListener("input", render);
+    render();
+})();
+</script>
+</body>
+</html>
+<script async src="/.netlify/scripts/ar" data-netlify-deploy-id="6afd7f1551ddae32696c976d" data-netlify-site-id="370b9d2e-dff5-4340-a597-3f315989d2fe" data-agent-runner-id="6afd7db475769b231c26a703"></script>
