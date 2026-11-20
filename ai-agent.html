@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Guru AI Agent</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#080d1b;
+ color:white;
+ min-height:100vh;
+ display:flex;
+ flex-direction:column;
+}
+header{
+ padding:18px;
+ border-bottom:1px solid #26334d;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+.logo{font-size:21px;font-weight:bold;color:#38bdf8}
+.back{color:#38bdf8;text-decoration:none}
+main{
+ width:100%;max-width:750px;
+ margin:auto;padding:25px 16px;
+ flex:1;
+}
+h1{text-align:center;font-size:30px}
+.subtitle{text-align:center;color:#9caecb}
+.panel{
+ margin-top:25px;
+ background:#111a2e;
+ border:1px solid #26334d;
+ border-radius:18px;
+ padding:18px;
+ min-height:330px;
+}
+.welcome{
+ text-align:center;
+ padding:35px 10px;
+ color:#cbd5e1;
+}
+.welcome span{font-size:45px}
+#messages{display:flex;flex-direction:column;gap:12px}
+.message{
+ padding:12px 15px;
+ border-radius:13px;
+ max-width:85%;
+ line-height:1.5;
+}
+.bot{background:#1e2c45;align-self:flex-start}
+.user{background:#075985;align-self:flex-end}
+form{display:flex;gap:9px;margin-top:16px}
+input{
+ flex:1;min-width:0;
+ padding:15px;
+ border-radius:12px;
+ border:1px solid #334155;
+ background:#0b1425;
+ color:white;
+ font-size:15px;
+}
+button{
+ border:0;border-radius:12px;
+ padding:0 20px;
+ background:#0284c7;color:white;
+ font-size:16px;font-weight:bold;
+}
+.note{text-align:center;color:#94a3b8;font-size:12px;margin-top:14px}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">🤖 Smart Guru</div>
+ <a class="back" href="index.html">← Home</a>
+</header>
+<main>
+ <h1>Smart Guru AI Agent</h1>
+ <p class="subtitle">Your AI Assistant for Learning & Technology</p>
+ <div class="panel">
+  <div class="welcome" id="welcome">
+   <span>🤖</span>
+   <h3>Namaste! Welcome to Smart Guru</h3>
+   <p>Ask me about technology, coding and learning.</p>
+  </div>
+  <div id="messages"></div>
+ </div>
+ <form id="chatForm">
+  <input id="question" placeholder="Type your message..." autocomplete="off" required>
+  <button type="submit">Send</button>
+ </form>
+ <p class="note">AI replies will be enabled after connecting the secure AI backend.</p>
+</main>
+<script>
+document.getElementById("chatForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const input=document.getElementById("question");
+ const text=input.value.trim();
+ if(!text)return;
+ document.getElementById("welcome").style.display="none";
+ const msg=document.createElement("div");
+ msg.className="message user";
+ msg.textContent=text;
+ document.getElementById("messages").appendChild(msg);
+ input.value="";
+ const reply=document.createElement("div");
+ reply.className="message bot";
+ reply.textContent="Your message is ready. Smart Guru AI will reply after the secure AI backend is connected.";
+ document.getElementById("messages").appendChild(reply);
+});
+</script>
+</body>
+</html>

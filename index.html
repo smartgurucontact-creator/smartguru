@@ -704,12 +704,22 @@ footer .footer-links a:hover { color: var(--cyan); }
         <div class="section-head reveal">
             <span class="eyebrow">AI Directory</span>
             <h2>AI <span class="gradient-text">Tools</span></h2>
-            <p>Discover popular AI tools for chatting, creating images and videos, coding, writing and getting more done.</p>
-        </div>
-</div>
+     <p>Discover popular AI tools for chatting, creating images and videos, coding, writing and getting more done.</p>
+</div>  
 
 <div class="popular-section">
-    <h3>🔥 Popular AI Tools</h3>
+
+   <h3>⭐ Featured AI Tools</h3>
+    <div class="popular-grid">
+        <a href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer">🔎 Perplexity AI</a>
+        <a href="https://www.deepl.com" target="_blank" rel="noopener noreferrer">🌐 DeepL</a>
+        <a href="https://www.remove.bg" target="_blank" rel="noopener noreferrer">🖼️ Remove.bg</a>
+        <a href="https://www.gamma.app" target="_blank" rel="noopener noreferrer">📊 Gamma</a>
+        <a href="https://elevenlabs.io" target="_blank" rel="noopener noreferrer">🎙️ ElevenLabs</a>
+    </div>
+</div>   
+<div class="popular-section">
+ <h3>🔥 Popular AI Tools</h3>
     <div class="popular-grid">
 <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">🤖 ChatGPT</a>
 <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">✨ Gemini</a>
@@ -720,7 +730,6 @@ footer .footer-links a:hover { color: var(--cyan); }
 </div>
 
 <div class="tools-bar reveal">       
- <div class="tools-bar reveal">
             <label class="search">
                 <span class="sr-only">Search AI tools</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -808,14 +817,7 @@ footer .footer-links a:hover { color: var(--cyan); }
 
 <script>
 function showMessage() {
-    var t = document.getElementById("toast");
-    t.textContent = "Welcome to Smart Guru!";
-    t.classList.add("show");
-    clearTimeout(window._toastTimer);
-    window._toastTimer = setTimeout(function () {
-        t.classList.remove("show");
-        document.getElementById("about").scrollIntoView({ behavior: "smooth" });
-    }, 1600);
+    window.location.href = "ai-agent.html";
 }
 
 document.getElementById("year").textContent = new Date().getFullYear();
