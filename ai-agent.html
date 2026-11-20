@@ -91,12 +91,55 @@ button{
   <div id="messages"></div>
  </div>
  <form id="chatForm">
+  <button type="button" id="voiceBtn">🎤 Speak</button>
   <input id="question" placeholder="Type your message..." autocomplete="off" required>
   <button type="submit">Send</button>
  </form>
  <p class="note">AI replies will be enabled after connecting the secure AI backend.</p>
 </main>
 <script>
+const voiceBtn = document.getElementById("voiceBtn");
+const questionInput = document.getElementById("question");
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+ const recognition = new SpeechRecognition();
+ let listening = false;
+ recognition.lang = "hi-IN";
+ recognition.continuous = false;
+ recognition.interimResults = false;
+
+ voiceBtn.addEventListener("click", function() {
+   if (listening) return;
+   try {
+     recognition.start();
+     listening = true;
+     voiceBtn.textContent = "🎙️ Listening...";
+   } catch (error) {
+     voiceBtn.textContent = "🎤 Speak";
+   }
+ });
+
+ recognition.onresult = function(event) {
+   questionInput.value = event.results[0][0].transcript;
+ };
+
+ recognition.onend = function() {
+   listening = false;
+   voiceBtn.textContent = "🎤 Speak";
+ };
+
+ recognition.onerror = function() {
+   listening = false;
+   voiceBtn.textContent = "🎤 Speak";
+   alert("Microphone permission check karein ya dobara try karein.");
+ };
+} else {
+ voiceBtn.addEventListener("click", function() {
+   alert("Voice Input is browser mein supported nahi hai. Chrome mein try karein.");
+ });
+}
+
 document.getElementById("chatForm").addEventListener("submit",function(e){
  e.preventDefault();
  const input=document.getElementById("question");
