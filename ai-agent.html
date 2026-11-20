@@ -125,7 +125,11 @@ document.getElementById("chatForm").addEventListener("submit",function(e){
 else if (/internet|इंटरनेट|wifi|वाईफाई/.test(q)) answer="Internet दुनिया भर के कंप्यूटर और मोबाइल को जोड़ने वाला नेटवर्क है। इसकी मदद से हम जानकारी खोज सकते हैं, वीडियो देख सकते हैं और संदेश भेज सकते हैं।";
 else if (/hang|hanging|slow|लटक|हैंग|धीमा/.test(q)) answer="मोबाइल हैंग होने के कई कारण हो सकते हैं, जैसे कम स्टोरेज, बहुत सारे ऐप खुले होना या पुराने सॉफ्टवेयर। अनावश्यक ऐप बंद करें और स्टोरेज चेक करें।";
 else if (/technology|tech/.test(q)) answer="Technology ke baare mein jaanne ke liye apna sawal thoda detail mein likhein. Main basic jaankari de sakta hoon.";
- else if (/thank|धन्यवाद|shukriya/.test(q)) answer="Aapka swagat hai! Smart Guru par seekhte rahiye.";
+ else if (/cyber safety|साइबर सुरक्षा|cyber security/.test(q)) answer="Cyber Safety का मतलब इंटरनेट और डिजिटल डिवाइस का सुरक्षित इस्तेमाल करना है। अपनी निजी जानकारी, पासवर्ड और OTP किसी के साथ साझा न करें।";
+else if (/online fraud|ऑनलाइन फ्रॉड|online scam|ठगी/.test(q)) answer="Online Fraud से बचने के लिए अनजान लिंक पर क्लिक न करें, किसी को OTP या PIN न बताएं और पैसे पाने के लिए UPI PIN कभी न डालें।";
+else if (/strong password|मजबूत पासवर्ड|पासवर्ड कैसा/.test(q)) answer="Strong Password ऐसा पासवर्ड होता है जिसे आसानी से कोई अनुमान न लगा सके। अक्षर, नंबर और विशेष चिन्ह मिलाकर लंबा और अलग पासवर्ड बनाएं।";
+else if (/otp|ओटीपी/.test(q)) answer="OTP का पूरा नाम One Time Password है। यह एक बार इस्तेमाल होने वाला सुरक्षा कोड है। इसे किसी के साथ साझा न करें, चाहे कोई बैंक कर्मचारी बनकर ही क्यों न मांगे।";
+else if (/thank|धन्यवाद|shukriya/.test(q)) answer="Aapka swagat hai! Smart Guru par seekhte rahiye.";
  reply.textContent=answer;
  document.getElementById("messages").appendChild(reply);
 });
