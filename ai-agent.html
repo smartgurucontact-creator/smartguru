@@ -154,6 +154,7 @@ document.getElementById("chatForm").addEventListener("submit",function(e){
  const reply=document.createElement("div");
  reply.className="message bot";
  const q=text.toLowerCase();
+ const isEnglish = /^[a-z0-9\s.,?!'"-]+$/i.test(text);
  let answer="Main abhi FAQ Assistant hoon. Aap mujhse Coding, Android, Website ya Technology ke baare mein pooch sakte hain.";
  if (/^(hi|hello|hey|namaste|नमस्ते)/.test(q)) answer="Namaste! Smart Guru mein aapka swagat hai. Main aapki kya madad kar sakta hoon?";
  
@@ -181,6 +182,33 @@ else if (/how are you|हाउ आर यू|कैसे हो/.test(q)) answ
 else if (/thank you|थैंक यू/.test(q)) answer='"Thank you" का मतलब है "धन्यवाद"। जवाब में आप "You are welcome" कह सकते हैं।';
 else if (/introduction|परिचय|अपना परिचय/.test(q)) answer="अपना परिचय ऐसे दें: Hello! My name is Rahul. I am from India. I am learning English. यानी नमस्ते! मेरा नाम राहुल है। मैं भारत से हूँ। मैं अंग्रेज़ी सीख रहा हूँ।";
 else if (/thank|धन्यवाद|shukriya/.test(q)) answer="Aapka swagat hai! Smart Guru par seekhte rahiye.";
+ if (isEnglish) {
+  if (/^(hi|hello|hey)\b/.test(q)) answer="Hello! Welcome to Smart Guru. How can I help you?";
+  else if (/what is your name|your name/.test(q)) answer="My name is Smart Guru Assistant. I can help you learn coding, Android, websites and technology.";
+  else if (/how are you/.test(q)) answer="I am fine, thank you! How can I help you?";
+  else if (/coding|programming/.test(q)) answer="Coding means writing instructions for a computer. Languages like Python, JavaScript and HTML help us build apps and websites.";
+  else if (/python/.test(q)) answer="Python is a popular programming language used in web development, automation, data analysis and AI.";
+  else if (/html/.test(q)) answer="HTML is used to create the structure of a webpage, including headings, paragraphs, images and links.";
+  else if (/css/.test(q)) answer="CSS is used to style webpages. It controls colors, fonts, spacing and layouts.";
+  else if (/javascript|java script/.test(q)) answer="JavaScript makes websites interactive. It can respond to button clicks and form submissions.";
+  else if (/android|phone|mobile/.test(q)) answer="Android is a mobile operating system. You can manage storage, battery and app permissions in your phone settings.";
+  else if (/website/.test(q)) answer="A website is a collection of web pages available on the internet. Smart Guru is an example of a website.";
+  else if (/internet|wifi|wi-fi/.test(q)) answer="The internet is a global network that connects computers and phones. We use it to find information, watch videos and send messages.";
+  else if (/hang|hanging|slow/.test(q)) answer="A phone may become slow because of low storage, many open apps or outdated software. Check your storage and close unused apps.";
+  else if (/technology|tech/.test(q)) answer="Technology uses tools, machines and digital systems to solve problems and make tasks easier.";
+  else if (/cyber safety|cyber security/.test(q)) answer="Cyber safety means using the internet and digital devices safely. Never share your passwords or OTP with anyone.";
+  else if (/online fraud|online scam/.test(q)) answer="To avoid online fraud, do not click unknown links or share your OTP, PIN or banking details.";
+  else if (/strong password|password/.test(q)) answer="A strong password is long and difficult to guess. Use a mix of letters, numbers and symbols.";
+  else if (/\botp\b/.test(q)) answer="OTP means One-Time Password. Never share it with anyone.";
+  else if (/computer/.test(q)) answer="A computer is an electronic machine that processes data and provides information.";
+  else if (/cpu/.test(q)) answer="CPU stands for Central Processing Unit. It processes instructions in a computer.";
+  else if (/ram/.test(q)) answer="RAM stands for Random Access Memory. It temporarily stores data used by running apps and programs.";
+  else if (/keyboard|mouse/.test(q)) answer="A keyboard is used to type letters and numbers. A mouse helps you point, click and select items on the screen.";
+  else if (/my name is/.test(q)) answer='"My name is" is used to tell someone your name. Example: My name is Rahul.';
+  else if (/thank you|thanks/.test(q)) answer="You're welcome! Keep learning with Smart Guru.";
+  else if (/introduction|introduce yourself/.test(q)) answer="You can introduce yourself like this: Hello! My name is Rahul. I am from India. I am learning English.";
+  else answer="I am Smart Guru FAQ Assistant. You can ask me about coding, Android, websites, computers or technology.";
+ }
  reply.textContent=answer;
  document.getElementById("messages").appendChild(reply);
 });
