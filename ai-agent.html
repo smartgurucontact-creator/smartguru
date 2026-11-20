@@ -55,9 +55,9 @@ h1{text-align:center;font-size:30px}
 }
 .bot{background:#1e2c45;align-self:flex-start}
 .user{background:#075985;align-self:flex-end}
-form{display:flex;gap:9px;margin-top:16px}
+form{display:flex;flex-wrap:nowrap;align-items:stretch;gap:7px;margin-top:16px;width:100%}
 input{
- flex:1;min-width:0;
+ flex:1 1 auto;min-width:0;width:0;
  padding:15px;
  border-radius:12px;
  border:1px solid #334155;
@@ -67,7 +67,7 @@ input{
 }
 button{
  border:0;border-radius:12px;
- padding:0 20px;
+ padding:0 10px;
  background:#0284c7;color:white;
  font-size:16px;font-weight:bold;
 }
@@ -91,10 +91,6 @@ button{
   <div id="messages"></div>
  </div>
  <form id="chatForm">
-  <select id="voiceLanguage">
-   <option value="hi-IN">हिंदी</option>
-   <option value="en-IN">English</option>
-  </select>
   <button type="button" id="voiceBtn">🎤 Speak</button>
   <input id="question" placeholder="Type your message..." autocomplete="off" required>
   <button type="submit">Send</button>
@@ -109,7 +105,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 if (SpeechRecognition) {
  const recognition = new SpeechRecognition();
  let listening = false;
- recognition.lang = document.getElementById("voiceLanguage").value;
+ recognition.lang = "hi-IN";
  recognition.continuous = false;
  recognition.interimResults = false;
 
