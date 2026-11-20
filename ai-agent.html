@@ -91,6 +91,10 @@ button{
   <div id="messages"></div>
  </div>
  <form id="chatForm">
+  <select id="voiceLanguage">
+   <option value="hi-IN">हिंदी</option>
+   <option value="en-IN">English</option>
+  </select>
   <button type="button" id="voiceBtn">🎤 Speak</button>
   <input id="question" placeholder="Type your message..." autocomplete="off" required>
   <button type="submit">Send</button>
@@ -105,7 +109,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 if (SpeechRecognition) {
  const recognition = new SpeechRecognition();
  let listening = false;
- recognition.lang = "hi-IN";
+ recognition.lang = document.getElementById("voiceLanguage").value;
  recognition.continuous = false;
  recognition.interimResults = false;
 
