@@ -154,11 +154,13 @@ document.getElementById("chatForm").addEventListener("submit",function(e){
  const reply=document.createElement("div");
  reply.className="message bot";
  const q=text.toLowerCase();
- const isEnglish = /^[a-z0-9\s.,?!'"-]+$/i.test(text);
+ const isHindiScript = /[\u0900-\u097F]/.test(text);
+ const isEnglish = !isHindiScript;
+
  let answer="Main abhi FAQ Assistant hoon. Aap mujhse Coding, Android, Website ya Technology ke baare mein pooch sakte hain.";
  if (/^(hi|hello|hey|namaste|नमस्ते)/.test(q)) answer="Namaste! Smart Guru mein aapka swagat hai. Main aapki kya madad kar sakta hoon?";
  
- else if (/coding|codding|कोडिंग|programming/.test(q)) answer="Coding ka matlab computer ko instructions dena hai. Jaise hum Hindi ya English mein baat karte hain, waise hi computer ko Python, JavaScript aur HTML jaisi languages se instructions dete hain. Example: HTML se website banti hai, JavaScript se website interactive hoti hai. Coding seekhne ke liye HTML se shuru karein.";
+ else if (/coding|codding|कोडिंग|programming/.test(q)) answer="कोडिंग का मतलब कंप्यूटर को निर्देश देना है। जैसे हम हिंदी या अंग्रेज़ी में बात करते हैं, वैसे ही कंप्यूटर को Python, JavaScript और HTML जैसी भाषाओं से निर्देश देते हैं। HTML से वेबसाइट बनती है और JavaScript से वेबसाइट में अलग-अलग काम किए जा सकते हैं।" ;
  else if (/python|पाइथन/.test(q)) answer="Python ek popular programming language hai. Iska use websites, automation, data analysis aur AI jaise projects mein hota hai. Example: print('Hello World') Python ka ek simple command hai.";
  else if (/html|एचटीएमएल/.test(q)) answer="HTML ka use website ka structure banane ke liye hota hai. Isse hum heading, paragraph, image aur links add kar sakte hain.";
  else if (/css|सीएसएस/.test(q)) answer="CSS ka use website ko sundar banane ke liye hota hai. Isse colors, fonts, spacing aur layout design kar sakte hain.";
@@ -182,6 +184,14 @@ else if (/how are you|हाउ आर यू|कैसे हो/.test(q)) answ
 else if (/thank you|थैंक यू/.test(q)) answer='"Thank you" का मतलब है "धन्यवाद"। जवाब में आप "You are welcome" कह सकते हैं।';
 else if (/introduction|परिचय|अपना परिचय/.test(q)) answer="अपना परिचय ऐसे दें: Hello! My name is Rahul. I am from India. I am learning English. यानी नमस्ते! मेरा नाम राहुल है। मैं भारत से हूँ। मैं अंग्रेज़ी सीख रहा हूँ।";
 else if (/thank|धन्यवाद|shukriya/.test(q)) answer="Aapka swagat hai! Smart Guru par seekhte rahiye.";
+ if (isHindiScript) {
+  if (/व्हाट इस कोडिंग|कोडिंग क्या है|कोडिंग/.test(q))
+   answer="कोडिंग का मतलब कंप्यूटर को निर्देश देना है। Python, JavaScript और HTML जैसी भाषाओं से हम कंप्यूटर और वेबसाइट को काम करना सिखाते हैं।";
+  else if (/हु आर यू|हाउ आर यू|कैसे हो/.test(q))
+   answer="मैं Smart Guru FAQ Assistant हूँ। मैं आपकी पढ़ाई, कोडिंग, Android और तकनीक से जुड़े सवालों में मदद कर सकता हूँ।";
+  else if (/नमस्ते|हेलो|हाय/.test(q))
+   answer="नमस्ते! Smart Guru में आपका स्वागत है। बताइए, मैं आपकी क्या मदद कर सकता हूँ?";
+ } 
  if (isEnglish) {
   if (/^(hi|hello|hey)\b/.test(q)) answer="Hello! Welcome to Smart Guru. How can I help you?";
   else if (/what is your name|your name/.test(q)) answer="My name is Smart Guru Assistant. I can help you learn coding, Android, websites and technology.";
