@@ -205,7 +205,7 @@ if (isRomanHindi) {
     answer="नमस्ते! Smart Guru में आपका स्वागत है। बताइए, मैं आपकी क्या मदद कर सकता हूँ?";
 }
 if (isEnglish) {
-  if (/agentic ai|ai agent/.test(q)) answer="Agentic AI is an AI system that can plan tasks, make decisions and use tools to complete goals with appropriate permissions.";
+if (/^what is agentic ai|^define agentic ai|^what is an ai agent/.test(q)) answer="Agentic AI is an AI system that can plan tasks, make decisions and use tools to complete goals with appropriate permissions.";
   else if (/\bartificial intelligence\b|\bwhat is ai\b/.test(q)) answer="Artificial Intelligence (AI) is technology that helps computers perform tasks such as understanding language, recognizing images and answering questions.";
 else if (/^(hi|hello|hey)\b/.test(q)) answer="Hello! Welcome to Smart Guru. How can I help you?";
   else if (/what is your name|your name/.test(q)) answer="My name is Smart Guru Assistant. I can help you learn coding, Android, websites and technology.";
