@@ -159,7 +159,8 @@ const isRomanHindi = /\b(kya|kaise|hai|hain|ho|mera|meri|mujhe|aap|tum|batao|sam
 const isEnglish = !isHindiScript && !isRomanHindi;
 
  let answer="Main abhi FAQ Assistant hoon. Aap mujhse Coding, Android, Website ya Technology ke baare mein pooch sakte hain.";
- if (/^(hi|hello|hey|namaste|नमस्ते)/.test(q)) answer="Namaste! Smart Guru mein aapka swagat hai. Main aapki kya madad kar sakta hoon?";
+if (/agentic ai|ai agent/.test(q)) answer="Agentic AI is an AI system that can plan tasks, make decisions and use tools to complete goals with appropriate permissions.";
+if (/^(hi|hello|hey|namaste|नमस्ते)/.test(q)) answer="Namaste! Smart Guru mein aapka swagat hai. Main aapki kya madad kar sakta hoon?";
  
  else if (/coding|codding|कोडिंग|programming/.test(q)) answer="कोडिंग का मतलब कंप्यूटर को निर्देश देना है। जैसे हम हिंदी या अंग्रेज़ी में बात करते हैं, वैसे ही कंप्यूटर को Python, JavaScript और HTML जैसी भाषाओं से निर्देश देते हैं। HTML से वेबसाइट बनती है और JavaScript से वेबसाइट में अलग-अलग काम किए जा सकते हैं।" ;
  else if (/python|पाइथन/.test(q)) answer="Python ek popular programming language hai. Iska use websites, automation, data analysis aur AI jaise projects mein hota hai. Example: print('Hello World') Python ka ek simple command hai.";
