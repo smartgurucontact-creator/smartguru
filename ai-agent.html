@@ -228,7 +228,7 @@ else if (/^(hi|hello|hey)\b/.test(q)) answer="Hello! Welcome to Smart Guru. How 
   else if (/my name is/.test(q)) answer='"My name is" is used to tell someone your name. Example: My name is Rahul.';
   else if (/thank you|thanks/.test(q)) answer="You're welcome! Keep learning with Smart Guru.";
   else if (/introduction|introduce yourself/.test(q)) answer="You can introduce yourself like this: Hello! My name is Rahul. I am from India. I am learning English.";
-  else answer="I am Smart Guru FAQ Assistant. You can ask me about coding, Android, websites, computers or technology.";
+else if (!answer) answer="I am Smart Guru FAQ Assistant. You can ask me about coding, Android, websites, computers or technology.";
  }
  reply.textContent=answer;
  document.getElementById("messages").appendChild(reply);
