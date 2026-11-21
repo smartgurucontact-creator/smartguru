@@ -155,7 +155,8 @@ document.getElementById("chatForm").addEventListener("submit",function(e){
  reply.className="message bot";
  const q=text.toLowerCase();
  const isHindiScript = /[\u0900-\u097F]/.test(text);
- const isEnglish = !isHindiScript;
+const isRomanHindi = /\b(kya|kaise|hai|hain|ho|mera|meri|mujhe|aap|tum|batao|samjhao|kyu|kyun|mein|nahi|haan|accha|achha|bhai|namaste|shukriya)\b/i.test(q);
+const isEnglish = !isHindiScript && !isRomanHindi;
 
  let answer="Main abhi FAQ Assistant hoon. Aap mujhse Coding, Android, Website ya Technology ke baare mein pooch sakte hain.";
  if (/^(hi|hello|hey|namaste|नमस्ते)/.test(q)) answer="Namaste! Smart Guru mein aapka swagat hai. Main aapki kya madad kar sakta hoon?";
@@ -192,7 +193,15 @@ else if (/thank|धन्यवाद|shukriya/.test(q)) answer="Aapka swagat ha
   else if (/नमस्ते|हेलो|हाय/.test(q))
    answer="नमस्ते! Smart Guru में आपका स्वागत है। बताइए, मैं आपकी क्या मदद कर सकता हूँ?";
  } 
- if (isEnglish) {
+if (isRomanHindi) {
+  if (/kya haal hai|kaise ho/.test(q))
+    answer="मैं ठीक हूँ! आप बताइए, मैं आपकी क्या मदद कर सकता हूँ?";
+  else if (/coding kya hai|kya hai coding|coding/.test(q))
+    answer="कोडिंग का मतलब कंप्यूटर को निर्देश देना है। Python, JavaScript और HTML से हम कंप्यूटर और वेबसाइट को काम करना सिखाते हैं।";
+  else if (/namaste|namaskar|hello|hi/.test(q))
+    answer="नमस्ते! Smart Guru में आपका स्वागत है। बताइए, मैं आपकी क्या मदद कर सकता हूँ?";
+}
+if (isEnglish) {
   if (/^(hi|hello|hey)\b/.test(q)) answer="Hello! Welcome to Smart Guru. How can I help you?";
   else if (/what is your name|your name/.test(q)) answer="My name is Smart Guru Assistant. I can help you learn coding, Android, websites and technology.";
   else if (/how are you/.test(q)) answer="I am fine, thank you! How can I help you?";
