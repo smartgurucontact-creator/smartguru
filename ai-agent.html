@@ -233,7 +233,10 @@ else if (/^(hi|hello|hey)\b/.test(q)) answer="Hello! Welcome to Smart Guru. How 
   else if (/introduction|introduce yourself/.test(q)) answer="You can introduce yourself like this: Hello! My name is Rahul. I am from India. I am learning English.";
 else if (!answer) answer="I am Smart Guru FAQ Assistant. You can ask me about coding, Android, websites, computers or technology.";
  }
- reply.textContent=answer;
+if (/difference between ai and agentic ai|ai vs agentic ai/.test(q)) {
+  answer="AI usually responds to instructions or questions. Agentic AI can also plan steps, make decisions and use tools to work toward a goal with appropriate permissions.";
+}
+reply.textContent=answer;
  document.getElementById("messages").appendChild(reply);
 });
 </script>
