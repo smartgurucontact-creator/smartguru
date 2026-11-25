@@ -468,6 +468,27 @@ button:focus-visible, .btn:focus-visible, nav a:focus-visible, footer a:focus-vi
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
+.tutorial-search {
+    max-width: 860px;
+    margin: 0 auto 28px;
+}
+
+.tutorial-search input {
+    width: 100%;
+    min-height: 54px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(13, 20, 36, 0.8);
+    color: var(--text);
+    font: 500 16px var(--body);
+    outline: none;
+}
+
+.tutorial-search input:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+}
 .tool {
     display: flex;
     flex-direction: column;
@@ -809,7 +830,16 @@ footer .footer-links a:hover { color: var(--cyan); }
             <h2>Technology <span class="gradient-text">Tutorials</span></h2>
             <p>Easy step-by-step guides to help you learn technology, apps, AI and coding.</p>
         </div>
-        <div class="tools-grid">
+<div class="tutorial-search">
+    <input
+        type="search"
+        id="tutorial-search"
+        placeholder="🔍 Search tutorials..."
+        autocomplete="off"
+    >
+</div>
+<p class="tools-count" id="tutorial-count" aria-live="polite"></p>
+<div class="tools-grid">
             <a class="box feature reveal" href="ai-tutorials.html" style="text-decoration:none">
                 <h3>🤖 AI Tutorials</h3>
                 <p>Learn how to use AI tools, prompts and smart features.</p>
@@ -970,6 +1000,27 @@ document.getElementById("year").textContent = new Date().getFullYear();
     }
     input.addEventListener("input", render);
     render();
+})();
+(function () {
+    var input = document.getElementById("tutorial-search");
+    var cards = document.querySelectorAll("#tutorials .tools-grid > a");
+    var count = document.getElementById("tutorial-count");
+
+    function filterTutorials() {
+        var q = input.value.trim().toLowerCase();
+        var found = 0;
+
+        cards.forEach(function (card) {
+            var match = card.textContent.toLowerCase().includes(q);
+            card.style.display = match ? "" : "none";
+            if (match) found++;
+        });
+
+        count.textContent = found + " tutorials found";
+    }
+
+    input.addEventListener("input", filterTutorials);
+    filterTutorials();
 })();
 </script>
 </body>
