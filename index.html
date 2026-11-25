@@ -839,6 +839,13 @@ footer .footer-links a:hover { color: var(--cyan); }
     >
 </div>
 <p class="tools-count" id="tutorial-count" aria-live="polite"></p>
+<div class="chips" id="tutorial-chips" role="group" aria-label="Filter tutorials">
+    <button type="button" class="tutorial-filter active" data-category="All">All</button>
+    <button type="button" class="tutorial-filter" data-category="AI">AI</button>
+    <button type="button" class="tutorial-filter" data-category="Android">Android</button>
+    <button type="button" class="tutorial-filter" data-category="Coding">Coding</button>
+    <button type="button" class="tutorial-filter" data-category="Internet">Internet</button>
+</div>
 <div class="tools-grid">
             <a class="box feature reveal" href="ai-tutorials.html" style="text-decoration:none">
                 <h3>🤖 AI Tutorials</h3>
@@ -1005,13 +1012,20 @@ document.getElementById("year").textContent = new Date().getFullYear();
     var input = document.getElementById("tutorial-search");
     var cards = document.querySelectorAll("#tutorials .tools-grid > a");
     var count = document.getElementById("tutorial-count");
+    var buttons = document.querySelectorAll(".tutorial-filter");
+    var activeCategory = "All";
 
     function filterTutorials() {
         var q = input.value.trim().toLowerCase();
         var found = 0;
 
         cards.forEach(function (card) {
-            var match = card.textContent.toLowerCase().includes(q);
+            var title = card.querySelector("h3").textContent.toLowerCase();
+            var categoryMatch = activeCategory === "All" ||
+                title.includes(activeCategory.toLowerCase());
+            var searchMatch = card.textContent.toLowerCase().includes(q);
+            var match = categoryMatch && searchMatch;
+
             card.style.display = match ? "" : "none";
             if (match) found++;
         });
@@ -1019,9 +1033,22 @@ document.getElementById("year").textContent = new Date().getFullYear();
         count.textContent = found + " tutorials found";
     }
 
+    buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            activeCategory = button.dataset.category;
+
+            buttons.forEach(function (b) {
+                b.classList.toggle("active", b === button);
+            });
+
+            filterTutorials();
+        });
+    });
+
     input.addEventListener("input", filterTutorials);
     filterTutorials();
 })();
+
 </script>
 </body>
 </html>
