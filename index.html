@@ -525,6 +525,43 @@ button:focus-visible, .btn:focus-visible, nav a:focus-visible, footer a:focus-vi
 .tools-empty strong { display: block; color: var(--text); font-family: var(--display); font-size: 20px; margin-bottom: 6px; }
 .tools-note { text-align: center; color: #64748b; font-size: 13px; margin: 24px 0 0; }
 
+/* ---------- FAQ Section ---------- */
+#faq {
+    padding: 70px 0;
+}
+
+.faq-list {
+    max-width: 850px;
+    margin: 30px auto 0;
+    display: grid;
+    gap: 14px;
+}
+
+.faq-list details {
+    background: rgba(13, 20, 36, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 14px;
+    padding: 20px 22px;
+    transition: 0.3s;
+}
+
+.faq-list details:hover {
+    border-color: var(--cyan);
+    transform: translateY(-2px);
+}
+
+.faq-list summary {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.faq-list details p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 14px 0 0;
+}
 /* ---------- Footer ---------- */
 footer {
     border-top: 1px solid var(--line);
@@ -884,6 +921,41 @@ footer .footer-links a:hover { color: var(--cyan); }
                 </a>
             </div>
             <p class="thanks">Thank you for visiting Smart Guru!</p>
+        </div>
+    </div>
+</section>
+<section id="faq">
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Frequently Asked Questions</span>
+            <h2>Common <span class="gradient-text">Questions</span></h2>
+        </div>
+
+        <div class="faq-list">
+            <details>
+                <summary>What is Smart Guru?</summary>
+                <p>Smart Guru is a learning website where you can explore technology, AI tools, and useful tutorials.</p>
+            </details>
+
+            <details>
+                <summary>Are the tutorials beginner-friendly?</summary>
+                <p>Yes, our tutorials are designed to explain useful topics in simple and easy language.</p>
+            </details>
+
+            <details>
+                <summary>Can I learn about Artificial Intelligence?</summary>
+                <p>Yes, explore our AI tutorials to learn about artificial intelligence and useful AI tools.</p>
+            </details>
+
+            <details>
+                <summary>How can I contact Smart Guru?</summary>
+                <p>You can contact us through the email address on our Contact Us section.</p>
+            </details>
+
+            <details>
+                <summary>Is Smart Guru free to visit?</summary>
+                <p>You can visit Smart Guru and explore its available tutorials for free.</p>
+            </details>
         </div>
     </div>
 </section>
