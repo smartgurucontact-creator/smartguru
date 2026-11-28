@@ -490,9 +490,19 @@ button:focus-visible, .btn:focus-visible, nav a:focus-visible, footer a:focus-vi
 .tool {
     display: flex;
     flex-direction: column;
-    padding: 22px;
+    padding: 24px;
+    background: linear-gradient(145deg, rgba(20, 31, 52, .96), rgba(10, 18, 34, .94));
+    border: 1px solid rgba(148, 163, 184, .18);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .16);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
     animation: welcome .5s ease-out both;
     animation-delay: var(--d, 0s);
+}
+.tool:hover {
+    transform: translateY(-5px);
+    border-color: color-mix(in srgb, var(--c, #38bdf8) 55%, transparent);
+    box-shadow: 0 16px 38px rgba(0, 0, 0, .28);
 }
 .tool-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
 .tool-icon {
