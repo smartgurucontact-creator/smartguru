@@ -515,6 +515,14 @@ button:focus-visible, .btn:focus-visible, nav a:focus-visible, footer a:focus-vi
     background: color-mix(in srgb, var(--c, #38bdf8) 14%, transparent);
     border: 1px solid color-mix(in srgb, var(--c, #38bdf8) 30%, transparent);
 }
+.tool-icon { position: relative; overflow: hidden; }
+.tool-logo {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    border-radius: 6px;
+}
 .tool h3 { font-size: 19px; line-height: 1.25; }
 .tool-cat {
     display: inline-block;
@@ -1102,7 +1110,15 @@ document.getElementById("year").textContent = new Date().getFullYear();
             card.style.setProperty("--c", C[t[1]]);
             card.style.setProperty("--d", Math.min(n, 8) * 0.04 + "s");
             var top = el("div", "tool-top"), info = el("div");
-            top.appendChild(el("div", "tool-icon", t[0].charAt(0)));
+            var logoBox = el("div", "tool-icon", t[0].charAt(0));
+            var logo = el("img", "tool-logo");
+            logo.src = "https://www.google.com/s2/favicons?domain=" + new URL(t[3]).hostname + "&sz=128";
+            logo.alt = "";
+            logo.loading = "lazy";
+            logo.onerror = function () { logo.remove(); };
+            logoBox.textContent = t[0].charAt(0);
+            logoBox.appendChild(logo);
+            top.appendChild(logoBox);
             info.appendChild(el("h3", "", t[0])); info.appendChild(el("span", "tool-cat", t[1]));
             top.appendChild(info); card.appendChild(top);
             card.appendChild(el("p", "", t[2]));
